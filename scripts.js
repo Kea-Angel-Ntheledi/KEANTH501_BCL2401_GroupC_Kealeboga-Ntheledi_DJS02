@@ -5,9 +5,9 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   const entries = new FormData(event.target);
   const dividend = entries.get("dividend");
-  const divider = entries = entries.get("divider");
+  const divider = entries.get("divider");
 
-// check if inputs are empty
+  //check if inputs are empty
   if (!dividend || !divider) {
     //result.classList.add("error-message")
     result.innerText =
@@ -15,33 +15,34 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-  //checks if inputs contain invalid characters
+  // check if inputs contain invalid characters
   const validInputRegex = /^[0-9]+$/;
-if (!validInputRegex.test(dividend) || !validInputRegex.test(divider)) {
+  if (!validInputRegex.test(dividend) || !validInputRegex.test(divider)) {
     result.classList.add("critical-error");
-    result,innerText = "something critical went wrong. Please reload the page.";
+    result.innerText = "Something critical went wrong. Please reload the page.";
     return;
-}
+  }
 
-try {
-  //force number conversion
-  const dividentNumber = Number(dividend);
-  const dividerNumber = Number(divider);
-//check for other numeric errors
-if (isNaN(dividentNumber) || isNaN(dividentNumber) || dividerNumber === 0) {
-  throw new Error(
-    "Invalid input: Divivson by zero or non-numeric vvalue provided."
-  );
-}
+  try {
+    // Force Number conversion
+    const dividendNumber = Number(dividend);
+    const dividerNumber = Number(divider);
 
-const resultValue = Math.floor(dividentNumber / dividerNumber);
-result.innerText = resultValue.toString();
-} catch (error) {
-  console.error("An error occured:", error);
-  console.error("call stack:", error.stack);
+    // Check for other numeric errors
+    if (isNaN(dividendNumber) || isNaN(dividendNumber) || dividerNumber === 0) {
+      throw new Error(
+        "Invalid input: Division by zero or non-numeric value provided."
+      );
+    }
 
-  //critical Error Handling
-  result.innerText = 
-  "Invalid input: Division by zero or non-numeric value provided.";
-}
+    const resultValue = Math.floor(dividendNumber / dividerNumber);
+    result.innerText = resultValue.toString();
+  } catch (error) {
+    console.error("An error occurred:", error);
+    console.error("Call stack:", error.stack);
+
+    // Critical Error Handling
+    result.innerText =
+      "Invalid input: Division by zero or non-numeric value provided.";
+  }
 });
