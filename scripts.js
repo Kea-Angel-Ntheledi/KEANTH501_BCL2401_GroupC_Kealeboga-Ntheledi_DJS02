@@ -22,3 +22,9 @@ if (!validInputRegex.test(dividend) || !validInputRegex.test(divider)) {
     result,innerText = "something critical went wrong. Please reload the page.";
     return;
 }
+
+try {
+  //force number conversion
+  const dividentNumber = Number(dividend);
+  const dividerNumber = Number(divider);
+}
