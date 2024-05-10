@@ -27,4 +27,16 @@ try {
   //force number conversion
   const dividentNumber = Number(dividend);
   const dividerNumber = Number(divider);
+//check for other numeric errors
+if (isNaN(dividentNumber) || isNaN(dividentNumber) || dividerNumber === 0) {
+  throw new Error(
+    "Invalid input: Divivson by zero or non-numeric vvalue provided."
+  );
+}
+
+const resultValue = Math.floor(dividentNumber / dividerNumber);
+result.innerText = resultValue.toString();
+} catch (error) {
+  console.error("An error occured:", error);
+  console.error("call stack:", error.stack);
 }
