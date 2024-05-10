@@ -39,4 +39,9 @@ result.innerText = resultValue.toString();
 } catch (error) {
   console.error("An error occured:", error);
   console.error("call stack:", error.stack);
+
+  //critical Error Handling
+  result.innerText = 
+  "Invalid input: Division by zero or non-numeric value provided.";
 }
+});
